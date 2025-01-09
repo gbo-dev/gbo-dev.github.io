@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on gbo</title>
+    <link>//localhost:1313/posts/</link>
+    <description>Recent content in Posts on gbo</description>
+    <generator>Hugo -- 0.140.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Jan 2025 12:07:26 +0100</lastBuildDate>
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dotfiles</title>
+      <link>//localhost:1313/posts/dotfiles/</link>
+      <pubDate>Thu, 09 Jan 2025 12:07:26 +0100</pubDate>
+      <guid>//localhost:1313/posts/dotfiles/</guid>
+      <description>&lt;p&gt;damn&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>First</title>
+      <link>//localhost:1313/posts/first/</link>
+      <pubDate>Thu, 09 Jan 2025 09:53:28 +0100</pubDate>
+      <guid>//localhost:1313/posts/first/</guid>
+      <description>&lt;h1 id=&#34;hello-world&#34;&gt;Hello world!&lt;/h1&gt;
+&lt;p&gt;This is the first entry, wow that is cool!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
