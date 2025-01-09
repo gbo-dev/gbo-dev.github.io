@@ -1,0 +1,75 @@
+baseURL: temp
+languageCode: en-us
+title: gbo
+theme: PaperMod
+
+params: 
+  # homeInfoParams:
+    # Title: "Hello there"
+    # Content: Welcome...
+  defaultTheme: dark
+  disableThemeToggle: true
+
+  hideFooter: true
+
+  ShowBreadCrumbs: true  
+  ShowReadingTime: false 
+  ShowShareButtons: false 
+  ShowPostNavLinks: false 
+  ShowCodeCopyButtons: true
+  disableScrollBarTheme: false
+
+  profileMode:
+     enabled: true
+     title: "gbo" # optional default will be site title
+     subtitle: "on the job hunt"
+     imageUrl: "/profile-picture.jpg" 
+     imageTitle: "Profile picture alt" 
+     imageWidth: 120 
+     imageHeight: 120 
+     buttons:
+       - name: Search 
+         url: "/search"
+       - name: About 
+         url: "/about"
+       - name: Agenda
+         url: "/agenda"
+
+  socialIcons: # optional
+    - name: "bluesky"
+      url: "https://bsky.app/profile/gastuf.bsky.social"
+    - name: "github"
+      url: "https://github.com/gbo-dev"
+    - name: "unsplash"
+      url: "https://unsplash.com/@gbodin"
+
+  cover:
+    linkFullImages: true
+
+menu:
+  main:
+    - identifier: search
+      name: Search 
+      url: /search/
+      weight: 10 
+    - identifier: archives
+      name: Posts
+      url: /archives/
+      weight: 20 
+    - identifier: tags
+      name: Tags 
+      url: /tags/
+      weight: 30 
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 40 
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
+
+# disableKinds:
+# - taxonomy
