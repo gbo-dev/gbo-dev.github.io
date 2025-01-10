@@ -30,7 +30,7 @@ params:
      buttons:
        - name: Search 
          url: "/search"
-       - name: About 
+       - name: About
          url: "/about"
        - name: Agenda
          url: "/agenda"
@@ -52,18 +52,22 @@ menu:
       name: Search 
       url: /search/
       weight: 10 
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 20 
     - identifier: archives
       name: Posts
       url: /archives/
-      weight: 20 
+      weight: 30 
     - identifier: tags
       name: Tags 
       url: /tags/
-      weight: 30 
+      weight: 40 
     - identifier: categories
       name: Categories
       url: /categories/
-      weight: 40 
+      weight: 50 
 
 outputs:
   home:

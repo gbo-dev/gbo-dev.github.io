@@ -17,6 +17,13 @@
     --border: rgb(238, 238, 238);
 }
 
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .dark {
     --theme: rgb(24, 21, 24);
     --entry: rgb(46, 46, 51);
@@ -37,9 +44,23 @@
     background: var(--theme);
 }
 
+
+
+.main {
+    width: 720px;
+}
+
 .profile img {
     width: 250px;
     height: 250px;
+}
+
+.profile_inner h1 {
+    font-family: 'JetBrains Mono';
+}
+
+.logo a {
+    font-family: 'JetBrains Mono';
 }
 
 html {
@@ -48,6 +69,21 @@ html {
     align-items: center;
     align-contents: center;
     height: 100%;
+}
+
+.post-header h1 {
+    /* TODO: Update headings and titles with jetbrains mono */
+    /*font-family: 'JetBrains Mono';*/
+}
+
+#menu a {
+    font-size: 16px;
+    font-family: 'JetBrains Mono';
+}
+
+#menu .active {
+    font-weight: 900;
+    border-bottom: 0px solid currentColor;
 }
 
 #profile_card_id {
@@ -61,3 +97,4 @@ html {
     box-shadow: 0px 0px 30px rgba(200,200,200, 0.2);
     cursor: pointer;
 }
+
