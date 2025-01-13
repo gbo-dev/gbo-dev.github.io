@@ -3,7 +3,7 @@
     --content-gap: 20px;
     --nav-width: 1024px;
     --main-width: 720px;
-    --header-height: 60px;
+    --header-height: 100px;
     --footer-height: 60px;
     --radius: 8px;
     --theme: rgb(255, 255, 255);
@@ -45,7 +45,6 @@
 }
 
 
-
 .main {
     width: 720px;
 }
@@ -68,7 +67,6 @@ html {
     justify-content: center;
     align-items: center;
     align-contents: center;
-    height: 100%;
 }
 
 .post-header h1 {
@@ -88,7 +86,6 @@ html {
 
 #profile_card_id {
     background-color: rgb(36, 37, 45);
-    margin: 0 0 20px 0;
     border-radius: 25%;
     transition: box-shadow 0.4s, transform 0.1s;
 }
