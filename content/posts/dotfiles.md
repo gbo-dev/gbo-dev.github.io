@@ -11,7 +11,7 @@ cover:
 
 ### The problem
 
-The first thing you notice when setting up a new machine is that you wish you had an easy way of restoring your highly customized setup from your previous machine. There are many ways of going about doing this. Maybe you keep a separate repository for each config, use a bare git repo, or the something similar. 
+The first thing you notice when setting up a new machine is that you wish you had an easy way of restoring your highly-customized setup from your previous machine. There are many ways of going about doing this. Maybe you keep a separate repository for each config, use a bare git repo, or the something similar. 
 
 The solution: `gnu stow`
 
@@ -24,7 +24,7 @@ An example dotfiles structure might look like this:
 │   ├── alacritty
 │   │   └── alacritty.toml
 │   ├── ghostty
-│   │   └── config
+│   │   └── config
 │   ├── kitty
 │   │   └── ...
 │   ├── nvim
