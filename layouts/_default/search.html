@@ -1,6 +1,25 @@
 {{- define "main" }}
 
 <header class="page-header">
+{{- if (.Param "ShowBreadCrumbs") -}}
+<div class="breadcrumbs">
+    {{- $url := replace .Parent.Permalink (printf "%s" site.Home.Permalink) "" }}
+    {{- $lang_url := strings.TrimPrefix (printf "%s/" .Lang) $url -}}
+
+    <a href="{{ "" | absLangURL }}">{{ i18n "home" | default "Home" }}</a>
+    {{- $scratch := newScratch }}
+    {{- range $index, $element := split $lang_url "/" }}
+
+    {{- $scratch.Add "path" (printf "%s/" $element )}}
+    {{- $bc_pg := site.GetPage ($scratch.Get "path") -}}
+
+    {{- if (and ($bc_pg) (gt (len . ) 0))}}
+    {{- print "&nbsp;/&nbsp;" | safeHTML -}}<a href="{{ $bc_pg.Permalink }}">{{ $bc_pg.Name }}</a>
+    {{- end }}
+
+    {{- end -}}
+</div>
+{{- end -}}
     <h1>
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -9,6 +28,8 @@
         </svg>
         {{- (printf " %s&nbsp;" .Title ) | htmlUnescape -}}
     </h1>
+
+
     {{- if .Description }}
     <div class="post-description">
         {{ .Description }}
@@ -20,6 +41,15 @@
     </div>
     {{- end }}
 </header>
+
+<div id="tags-categories">
+    <a class="button" href="/categories" rel="noopener" title="Categories">
+        <span class="button-inner">Categories</span>
+    </a>
+    <a class="button" href="/tags" rel="noopener" title="Tags">
+        <span class="button-inner">Tags</span>
+    </a>
+</div>
 
 <div id="searchbox">
     <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default (printf "%s ↵" .Title) }}"
