@@ -28,12 +28,18 @@ params:
      imageWidth: 120 
      imageHeight: 120 
      buttons:
-       - name: Search 
+       - name: Search
          url: "/search"
        - name: About
          url: "/about"
-       - name: Agenda
-         url: "/agenda"
+       - name: Posts
+         url: "/posts"
+       # - name: Tags
+       #   url: "/tags"
+       # - name: Categories
+       #   url: "/categories"
+       # - name: Agenda
+       #   url: "/agenda"
 
   socialIcons: # optional
     - name: "bluesky"
@@ -58,16 +64,16 @@ menu:
       weight: 20 
     - identifier: archives
       name: Posts
-      url: /archives/
+      url: /posts/
       weight: 30 
-    - identifier: tags
-      name: Tags 
-      url: /tags/
-      weight: 40 
-    - identifier: categories
-      name: Categories
-      url: /categories/
-      weight: 50 
+    # - identifier: tags
+    #   name: Tags 
+    #   url: /tags/
+    #   weight: 40 
+    # - identifier: categories
+    #   name: Categories
+    #   url: /categories/
+    #   weight: 50 
 
 outputs:
   home:
