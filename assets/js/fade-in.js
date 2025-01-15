@@ -18,10 +18,12 @@ function triggerAnimations() {
   } else {
     // If not first visit, show elements without animation
     document.querySelectorAll('.hide-on-start, .hide-on-start-top, .hide-on-start-bottom').forEach(item => {
-      item.classList.add('show-on-start');
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+      item.classList.remove('.hide-on-start');
+      item.classList.remove('.hide-on-start-top');
+      item.classList.remove('.hide-on-start-bottom');
 
-      // Ensure they don't remain hidden after subsequent visits
-      item.style.transition = 'none';
     });
   }
 }
