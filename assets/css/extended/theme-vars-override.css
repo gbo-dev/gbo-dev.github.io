@@ -44,11 +44,6 @@
     background: var(--theme);
 }
 
-
-.main {
-    /*width: 720px;*/
-}
-
 .profile img {
     width: 250px;
     height: 250px;
@@ -95,3 +90,22 @@ html {
     cursor: pointer;
 }
 
+.hide-on-start {
+    opacity: 0;
+}
+
+.hide-on-start-top {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+.hide-on-start-bottom {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.show-on-start {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.75s, transform 0.5s;
+}
