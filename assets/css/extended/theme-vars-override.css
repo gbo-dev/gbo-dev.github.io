@@ -109,3 +109,7 @@ html {
     transform: translateY(0);
     transition: opacity 0.75s, transform 0.5s;
 }
+
+.font {
+    font-family: 'JetBrains Mono';
+}
