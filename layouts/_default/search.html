@@ -42,14 +42,10 @@
     {{- end }}
 </header>
 
-<div id="tags-categories">
-    <a class="button" href="/categories" rel="noopener" title="Categories">
-        <span class="button-inner">Categories</span>
-    </a>
-    <a class="button" href="/tags" rel="noopener" title="Tags">
-        <span class="button-inner">Tags</span>
-    </a>
-</div>
+<ul class="tags-categories">
+    <li><a href="/categories">Categories</a></li>
+    <li><a href="/tags">Tags</a></li>
+</ul>
 
 <div id="searchbox">
     <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default (printf "%s ↵" .Title) }}"
