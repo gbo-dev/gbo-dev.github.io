@@ -7,13 +7,15 @@ params:
   # homeInfoParams:
     # Title: "Hello there"
     # Content: Welcome...
+  
+  # author: ["gbo"]
   defaultTheme: dark
   disableThemeToggle: true
 
   hideFooter: true
 
   ShowBreadCrumbs: true  
-  ShowReadingTime: false 
+  ShowReadingTime: true
   ShowShareButtons: false 
   ShowPostNavLinks: false 
   ShowCodeCopyButtons: true
