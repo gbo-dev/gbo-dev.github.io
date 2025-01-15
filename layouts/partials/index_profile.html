@@ -23,18 +23,18 @@
                     {{- $img = $img.Resize "150x150" }}
                 {{- end }}
             {{- end }}
+        <div class="hide-on-start">
             <img id="profile_card_id" 
-                class="hide-on-start-top"
                 draggable="false" 
                 src="{{ $img.Permalink }}" 
                 alt="{{ .imageTitle | default "profile image" }}" 
                 title="{{ .imageTitle }}"
                 height="{{ .imageHeight | default 150 }}" 
                 width="{{ .imageWidth | default 150 }}" />
+        </div>
         {{- else }}
         <div class="hide-on-start">
             <img id="profile_card_id" 
-                class="hide-on-start-top"
                 draggable="false" 
                 src="{{ .imageUrl | absURL }}" 
                 alt="{{ .imageTitle | default " profile image" }}" 

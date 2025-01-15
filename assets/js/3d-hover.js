@@ -11,37 +11,26 @@ const width = el.clientWidth
   * Which will trigger function 'handleMove'
   * On mousemove
   */
-el.addEventListener('mousemove', handleMove)
+el.addEventListener('mousemove', (e) => {
 
-/* Define function a */
-function handleMove(e) {
-  /*
-    * Get position of mouse cursor
-    * With respect to the element
-    * On mouseover
-    */
-  /* Store the x position */
-  const xVal = e.layerX
-  /* Store the y position */
-  const yVal = e.layerY
+  // Get position of mouse cursor with respect to the element on mouseover 
+  const x = e.layerX
+  const y = e.layerY
   
   /*
-    * Calculate rotation valuee along the Y-axis
-    * Here the multiplier 20 is to
-    * Control the rotation
-    * You can change the value and see the results
-    */
-  const yRotation = 25 * ((xVal - width / 2) / width)
+   * Calculate rotation valuee along the Y-axis
+   */
+  const yRotation = 25 * ((x - width / 2) / width)
   
   /* Calculate the rotation along the X-axis */
-  const xRotation = -25 * ((yVal - height / 2) / height)
+  const xRotation = -25 * ((y - height / 2) / height)
   
   /* Generate string for CSS transform property */
   const string = 'perspective(500px) scale(1.0) rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)'
   
   /* Apply the calculated transformation */
   el.style.transform = string
-}
+});
 
 /* Add listener for mouseout event, remove the rotation */
 el.addEventListener('mouseout', function() {
