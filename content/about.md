@@ -27,8 +27,9 @@ Is mainly found on my LinkedIn page or CV that you've likely gotten along with t
 
 ## Interests in no particular order
 
+- Linux in general: daily OS and development 
 - Creating/spreading useful information
-- FOSS
+- FOSS: Free and open source software
 - Creating digital art
 - Game development 
 - CTF competitions
@@ -38,3 +39,4 @@ Is mainly found on my LinkedIn page or CV that you've likely gotten along with t
 - Environment customization: neovim, DE, terminal, tmux, shell, scripts
 - Creating useful tools for improving QoL 
 - 3D printing and CAD modeling 
+- Mechanical keyboards
