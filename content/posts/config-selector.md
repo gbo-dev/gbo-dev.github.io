@@ -1,7 +1,7 @@
 ---
 date: '2025-02-28T16:28:36+01:00'
 draft: false 
-title: 'Quick access config navigation'
+title: 'Navigate configs faster'
 tags: ["config"]
 cover:
     image: "/config-navigation.png"
@@ -31,6 +31,13 @@ config -d config-name   # Navigates to config directory ('dir' also works)
 Make sure to set your `EDITOR` environment variable to open the configs in your preferred editor.
 ```zsh
 export EDITOR=nvim
+```
+
+You can also provide appropriate permissions for your scripts and directory:
+
+```
+chmod 700 .dotfiles
+chmod 600 .dotfiles/path-to-scripts/*.sh
 ```
 
 ## Script
