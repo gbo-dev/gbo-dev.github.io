@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About me"
 layout: "about"
 url: "/about/"
 summary: about 
@@ -9,25 +9,30 @@ cover:
     caption: ""
 
 ---
-<!--TODO: Fix the zoom problems for this page -->
-<!--Comments not OK in hugo? -->
 
-## Who am I?
 
-I'm a computer science gruduate who loves being interested in things. Often that involves technical things, but I'm curious to many subjects. I love keeping up with the latest, be that in the AI/ML field, world news, politics, or new tech. I always try to be kind, open, and empathetic to others. 
+Hello World! 
+
+> **Who am I?**
+
+I'm a recent computer science graduate of Chalmers University of Technology with a passion for learning and deepening my understanding of technologies, computer science subjects, and problem-solving. I love keeping up with the latest, be that in the AI/ML field, world news, politics, or new tech. I always try to be kind, open, and empathetic to others, and I always strive to improve.
 
 I'm looking for a workplace where I can learn from experienced colleagues and grow professionally, while I develop the technology of the future. An essential goal to me is leaving the world in a better place than I found it. 
 
 
 
-## Work experience & education
+> **What is your work experience and education?**
 
 Is mainly found on my LinkedIn page or CV that you've likely gotten along with this link. I attempt to remain somewhat anonymous through this page.
 
 
-## Interests in no particular order
+> **What are you interested in, specifically?**
 
-- Linux in general: daily OS and development 
+- Linux: daily OS and development 
+- Embedded systems and networking 
+- Real-time systems
+- Operating systems
+- TUIs and CLI tools
 - Creating/spreading useful information
 - FOSS: Free and open source software
 - Creating digital art
@@ -35,7 +40,7 @@ Is mainly found on my LinkedIn page or CV that you've likely gotten along with t
 - CTF competitions
 - Photography: both casual phone photography and with my X-T100; WIP: [*unsplash*](https://unsplash.com/@gbodin)
 - Video creation
-- Local LLMs and tools like ollama, openweb-ui 
+- Self-hosting: local LLMs, tools like ollama, openweb-ui, homelab
 - Environment customization: neovim, DE, terminal, tmux, shell, scripts
 - Creating useful tools for improving QoL 
 - 3D printing and CAD modeling 
