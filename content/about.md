@@ -4,7 +4,7 @@ layout: "about"
 url: "/about/"
 summary: about 
 cover:
-    image: "/about.png"
+    image: "/about-stars.png"
     alt: "About page image"
     caption: ""
 
