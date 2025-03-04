@@ -16,7 +16,7 @@ Instead, I created a zsh script (easily modifiable for bash) using `fzf` to quic
 ![Alt Text](/config-script.webp)
 
 
-Since configs often contains multiple files, also changing the directory to your selected config easily allows you to navigate your config directories. 
+Since configs often contain multiple files, also changing the directory to your selected config allows you to easily navigate your config directories. 
 
 ## Usage
 
