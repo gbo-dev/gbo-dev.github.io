@@ -17,6 +17,8 @@ The solution: `gnu stow`
 
 Using GNU Stow we create symlinks between our dotfiles repository, housing all of our config files, and our home directory. By mirroring the `~/.config/` structure (and also the placement of files like .zshrc etc.) we can simply run `stow .` in the repo directory to create the appropriate symlinks. The `.git/` directory is ignored. 
 
+The symlinks will be interpreted as the files in our dotfiles directory, meaning any changes will be tracked by git. This allows us to easily configure them as normal, and also easily adding the changes to our repository. 
+
 An example dotfiles structure might look like this: 
 ```plaintext
 .dotfiles       << run 'stow .' or similar here
@@ -31,7 +33,9 @@ An example dotfiles structure might look like this:
 │   │   └── ...
 │   └── tmux
 │       └── ...
-├── .git/
+├── .git
 └── .zshrc
 ```
-Maintaining changes to your dotfiles is now as simple as commiting to a repository. Always make a backup before trying things. Check out my .dotfiles repo [here](https://github.com/gbo-dev/.dotfiles).
+Maintaining changes to your dotfiles is now as simple as commiting to a repository.
+
+Always make a backup before trying things. Check out my .dotfiles repo [here](https://github.com/gbo-dev/.dotfiles).
