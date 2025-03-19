@@ -37,7 +37,7 @@ You can also provide appropriate permissions for your scripts and directory:
 
 ```
 chmod 700 .dotfiles
-chmod 600 .dotfiles/path-to-scripts/*.sh
+chmod 700 .dotfiles/path-to-scripts/*.sh
 ```
 
 ## Script
