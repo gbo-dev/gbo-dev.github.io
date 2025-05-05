@@ -24,7 +24,7 @@ params:
   profileMode:
      enabled: true
      title: "gbo" # optional default will be site title
-     subtitle: "on the job hunt"
+     subtitle: "working on evaluating AI developer tools"
      imageUrl: "/profile-picture.jpg" 
      imageTitle: "Profile picture alt" 
      imageWidth: 120 
