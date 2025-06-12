@@ -1,0 +1,22 @@
+.typewriter-subtitle {
+    position: relative;
+}
+
+.typewriter-subtitle.typing::after,
+.typewriter-subtitle.typed::after {
+    content: "|";
+    position: absolute;
+    right: -0.1em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: inherit;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1;
+    pointer-events: none;
+    opacity: 1;
+}
+
+.typewriter-subtitle.typed::after {
+    color: transparent;
+}
