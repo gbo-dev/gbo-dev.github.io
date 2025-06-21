@@ -44,7 +44,7 @@ An example dotfiles structure might look like this:
 
 ### Example usage on a fresh machine
 
-1. Clone this repository to your home directory:
+1. Clone your dotfiles to your home directory:
    ```bash
    git clone <your-dotfiles-repo> ~/.dotfiles
    ```
