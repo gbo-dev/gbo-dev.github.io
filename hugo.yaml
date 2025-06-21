@@ -21,7 +21,7 @@ params:
     enabled: true
     title: "gbo" # optional default will be site title
     subtitle: "Software Engineer"
-    imageUrl: "/profile-picture.jpg"
+    imageUrl: "/profile-picture.webp"
     imageTitle: "Profile picture alt"
     imageWidth: 120
     imageHeight: 120

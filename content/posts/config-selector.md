@@ -1,22 +1,22 @@
 ---
 date: '2025-02-28T16:28:36+01:00'
-draft: false 
+draft: false
 title: 'Navigate configs faster'
 tags: ["config"]
 cover:
-    image: "/config-navigation.png"
+    image: "/config-navigation.webp"
     alt: "Config selector page image"
     caption: ""
 ---
 
-I previously used shell aliases to quickly access the config files I was modifying often. This become a bit cumbersome when the number of configs grew. 
+I previously used shell aliases to quickly access the config files I was modifying often. This become a bit cumbersome when the number of configs grew.
 
 Instead, I created a zsh script (easily modifiable for bash) using `fzf` to quickly select which config to edit or navigate to.
 
 ![Alt Text](/config-script.webp)
 
 
-Since configs often contain multiple files, also changing the directory to your selected config allows you to easily navigate your config directories. 
+Since configs often contain multiple files, also changing the directory to your selected config allows you to easily navigate your config directories.
 
 ## Usage
 
@@ -25,7 +25,7 @@ Typically, I want to edit the config I want to navigate to, so by default the sc
 ```zsh
 config                  # Config selection in fzf, opening in $EDITOR
 config config-name      # Opens config-name in $EDITOR
-config -d config-name   # Navigates to config directory ('dir' also works) 
+config -d config-name   # Navigates to config directory ('dir' also works)
 ```
 
 Make sure to set your `EDITOR` environment variable to open the configs in your preferred editor.

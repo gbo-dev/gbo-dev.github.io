@@ -4,7 +4,7 @@ draft: false
 title: 'Dotfiles'
 tags: ["config", "dotfiles"]
 cover:
-    image: "/dotfiles.png"
+    image: "/dotfiles.webp"
     alt: "Dotfiles page image"
     caption: ""
 ---
