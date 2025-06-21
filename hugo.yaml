@@ -3,45 +3,41 @@ languageCode: en-us
 title: gbo
 theme: PaperMod
 
-params: 
-  # homeInfoParams:
-    # Title: "Hello there"
-    # Content: Welcome...
-  
+params:
   # author: ["gbo"]
   defaultTheme: dark
   disableThemeToggle: true
 
   hideFooter: true
 
-  ShowBreadCrumbs: true  
+  ShowBreadCrumbs: true
   ShowReadingTime: true
-  ShowShareButtons: false 
-  ShowPostNavLinks: false 
+  ShowShareButtons: false
+  ShowPostNavLinks: false
   ShowCodeCopyButtons: true
   disableScrollBarTheme: false
 
   profileMode:
-     enabled: true
-     title: "gbo" # optional default will be site title
-     subtitle: "working on evaluating AI developer tools"
-     imageUrl: "/profile-picture.jpg" 
-     imageTitle: "Profile picture alt" 
-     imageWidth: 120 
-     imageHeight: 120 
-     buttons:
-       - name: Search
-         url: "/search"
-       - name: About
-         url: "/about"
-       - name: Posts
-         url: "/posts"
-       # - name: Tags
-       #   url: "/tags"
-       # - name: Categories
-       #   url: "/categories"
-       # - name: Agenda
-       #   url: "/agenda"
+    enabled: true
+    title: "gbo" # optional default will be site title
+    subtitle: "Software Engineer"
+    imageUrl: "/profile-picture.jpg"
+    imageTitle: "Profile picture alt"
+    imageWidth: 120
+    imageHeight: 120
+    buttons:
+      # - name: Search
+      #   url: "/search"
+      - name: About
+        url: "/about"
+      - name: Posts
+        url: "/posts"
+      # - name: Tags
+      #   url: "/tags"
+      # - name: Categories
+      #   url: "/categories"
+      # - name: Agenda
+      #   url: "/agenda"
 
   socialIcons: # optional
     - name: "bluesky"
@@ -49,33 +45,33 @@ params:
     - name: "github"
       url: "https://github.com/gbo-dev"
     - name: "unsplash"
-      url: "https://unsplash.com/@gbodin"
+      url: "https://unsplash.com/@gbo_"
 
   cover:
     linkFullImages: true
 
 menu:
   main:
-    - identifier: search
-      name: Search 
-      url: /search/
-      weight: 10 
+    # - identifier: search
+    #   name: Search
+    #   url: /search/
+    #   weight: 10
     - identifier: about
       name: About
       url: /about/
-      weight: 20 
+      weight: 20
     - identifier: archives
       name: Posts
       url: /posts/
-      weight: 30 
+      weight: 30
     # - identifier: tags
-    #   name: Tags 
+    #   name: Tags
     #   url: /tags/
-    #   weight: 40 
+    #   weight: 40
     # - identifier: categories
     #   name: Categories
     #   url: /categories/
-    #   weight: 50 
+    #   weight: 50
 
 outputs:
   home:
