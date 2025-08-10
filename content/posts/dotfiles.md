@@ -17,29 +17,44 @@ The first thing you notice when setting up a new machine is that you wish you ha
 
 Using GNU Stow we create symlinks between our dotfiles repository, housing all of our config files, and our home directory. Using a `.stow-local-ignore` we can ignore certain files or directories that we don't want to symlink.
 
-For each package in the repo that you want symlinked, run:
+Each package in the dotfiles repository contains the complete directory structure that mirrors where the files should be placed in your home directory. For each package you want to symlink, run:
 ```bash
-stow <package> # For example: stow .zshrc
+stow <package> # For example: stow zsh
 ```
 
-The symlinks will be interpreted as the files in our dotfiles directory, meaning any changes easily be tracked by git. This allows us to easily configure them as normal, and also easily add the changes to our dotfiles repository.
+The symlinks will be interpreted as the files in our dotfiles directory, meaning any changes can easily be tracked by git. This allows us to configure them as normal, and also easily add the changes to our dotfiles repository.
 
-An example dotfiles structure might look like this:
+A proper dotfiles structure using stow packages looks like this:
 ```plaintext
-.dotfiles
-├── .config
-│   ├── alacritty
-│   │   └── alacritty.toml
-│   ├── ghostty
-│   │   └── config
-│   ├── kitty
-│   │   └── ...
-│   ├── nvim
-│   │   └── ...
-│   └── tmux
+.dotfiles/
+├── alacritty/
+│   └── .config/
+│       └── alacritty/
+│           └── alacritty.toml
+├── ghostty/
+│   └── .config/
+│       └── ghostty/
+│           └── config
+├── kitty/
+│   └── .config/
+│       └── kitty/
+│           └── ...
+├── nvim/
+│   └── .config/
+│       └── nvim/
+│           └── ...
+├── tmux/
+│   └── .config/
+│       └── tmux/
+│           └── ...
+├── zsh/
+│   ├── .zshrc
+│   ├── .zsh_aliases
+│   └── .oh-my-zsh/
 │       └── ...
-├── .git
-└── .zshrc
+├── .git/
+├── .stow-local-ignore
+└── README.md
 ```
 
 ### Example usage on a fresh machine
@@ -49,21 +64,12 @@ An example dotfiles structure might look like this:
    git clone <your-dotfiles-repo> ~/.dotfiles
    ```
 
-2. For each package in the repo that you want symlinked, run:
+2. Navigate to your dotfiles directory and stow the packages you want:
    ```bash
-   stow <package> # For example: stow .zshrc
-   ```
-
-### Installing on a machine with existing configs
-
-> **Warning:** The `--adopt` flag will overwrite the contents of your dotfiles directory with the contents from your target directory.
-
-If you already have existing configurations you want to back up or adopt:
-
-1. Clone the repo and cd into it
-2. For each package that already exists on the machine, use the `--adopt` flag:
-   ```bash
-   stow <package> --adopt # For example: stow .zshrc --adopt
+   cd ~/.dotfiles
+   stow zsh
+   stow alacritty
+   stow nvim
    ```
 
 Maintaining changes to your dotfiles is now as simple as commiting to a repository.
