@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: 'Geist Sans', system-ui, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-mono: 'Iosevka', monospace;
+
+  /* Catppuccin Mocha Colors */
+  --color-rosewater: #f5e0dc;
+  --color-flamingo: #f2cdcd;
+  --color-pink: #f5c2e7;
+  --color-mauve: #cba6f7;
+  --color-red: #f38ba8;
+  --color-maroon: #eba0ac;
+  --color-peach: #fab387;
+  --color-yellow: #f9e2af;
+  --color-green: #a6e3a1;
+  --color-teal: #94e2d5;
+  --color-sky: #89dceb;
+  --color-sapphire: #74c7ec;
+  --color-blue: #89b4fa;
+  --color-lavender: #b4befe;
+  --color-text: #cdd6f4;
+  --color-subtext1: #bac2de;
+  --color-subtext0: #a6adc8;
+  --color-overlay2: #9399b2;
+  --color-overlay1: #7f849c;
+  --color-overlay0: #6c7086;
+  --color-surface2: #585b70;
+  --color-surface1: #45475a;
+  --color-surface0: #313244;
+  --color-base: #1e1e2e;
+  --color-mantle: #181825;
+  --color-crust: #11111b;
+}
+
+:root {
+    color-scheme: dark;
+    --stagger: 1;
+}
+
+html {
+  background-color: #111111 !important;
+  color: #c9d1d9;
+  font-size: 20px;
+}
+
+body {
+    background-color: #111111 !important;
+}
+
+:not(pre) > code {
+  background-color: rgba(110, 118, 129, 0.4);
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  font-size: 85%;
+  font-family: var(--font-mono);
+  color: #e6edf3;
+}
+
+/* Bold and italic styling for prose */
+.prose strong {
+  font-weight: 700;
+  color: #e6edf3;
+}
+
+/* Italic text uses the same font as regular text */
+.prose em {
+  font-style: italic;
+}
+
+/* Blockquotes use Newsreader serif font */
+.prose blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Code blocks */
+pre.astro-code,
+pre.shiki,
+pre[class*="astro-code"],
+pre[style] {
+    all: unset;
+    display: block;
+    background-color: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+/* Copy button for code blocks */
+pre.astro-code .copy-button,
+pre.shiki .copy-button,
+pre[class*="astro-code"] .copy-button,
+pre[style] .copy-button {
+    position: absolute;
+    top: 0.375rem;
+    right: 0.375rem;
+    background: rgba(42, 42, 42, 0.8);
+    border: 1px solid #3a3a3a;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a6adc8;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+pre.astro-code .copy-button svg,
+pre.shiki .copy-button svg,
+pre[class*="astro-code"] .copy-button svg,
+pre[style] .copy-button svg {
+    width: 14px;
+    height: 14px;
+}
+
+pre.astro-code:hover .copy-button,
+pre.shiki:hover .copy-button,
+pre[class*="astro-code"]:hover .copy-button,
+pre[style]:hover .copy-button {
+    opacity: 1;
+}
+
+pre.astro-code .copy-button:hover,
+pre.shiki .copy-button:hover,
+pre[class*="astro-code"] .copy-button:hover,
+pre[style] .copy-button:hover {
+    background: #3a3a3a;
+    color: #cdd6f4;
+}
+
+pre.astro-code .copy-button.copied,
+pre.shiki .copy-button.copied,
+pre[class*="astro-code"] .copy-button.copied,
+pre[style] .copy-button.copied {
+    background: #3a3a3a;
+    color: #a6e3a1;
+    opacity: 1;
+}
+
+/* Images and media - same styling as code blocks */
+.prose img,
+.prose video,
+.prose gif,
+article img,
+article video,
+article gif {
+    border-radius: 0.5rem;
+    border: 1px solid #2a2a2a;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem 0;
+}
+
+pre.astro-code code,
+pre.shiki code,
+pre[class*="astro-code"] code,
+pre[style] code {
+    display: block;
+    padding: 0.75rem;
+    font-size: 16px;
+    font-family: var(--font-mono);
+    line-height: 1.0;
+    counter-reset: line;
+    color: #c9d1d9;
+}
+
+pre.astro-code .line,
+pre.shiki .line,
+pre[class*="astro-code"] .line,
+pre[style] .line {
+    display: block;
+}
+
+pre.astro-code .line::before,
+pre.shiki .line::before,
+pre[class*="astro-code"] .line::before,
+pre[style] .line::before {
+    content: counter(line);
+    counter-increment: line;
+    display: inline-block;
+    width: 0.75rem;
+    margin-right: 2rem;
+    font-size: 0.75rem;
+    text-align: right;
+    color: rgba(160, 175, 185, 0.6);
+}
+
+/* Force override any Shiki dark theme colors */
+pre.astro-code span[style],
+pre.shiki span[style] {
+    color: var(--shiki-dark) !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}
+
+/* Entry animation */
+@keyframes entry {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-entry {
+    animation: entry 0.6s both calc(var(--stagger) * 0.12s);
+  }
+}
+
+@utility prose-headings {
+  font-weight: 600;
+}
+
+.prose h1 {
+  font-size: 1.5rem !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.prose h2 {
+  font-size: 1.3rem !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.prose h3 {
+  font-size: 1.2rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+}

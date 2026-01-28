@@ -1,0 +1,171 @@
+---
+// This component adds the modal structure and scripts for expandable images
+import { Image } from 'astro:assets';
+---
+
+<div id="image-modal" class="image-modal" aria-hidden="true">
+  <button class="image-modal-close" aria-label="Close image">&times;</button>
+  <img id="modal-image" src="" alt="" />
+</div>
+
+<script>
+  // Wait for DOM to be ready
+  function initImageModal() {
+    const modal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+    const closeButton = modal?.querySelector('.image-modal-close');
+
+    if (!modal || !modalImage) return;
+
+    function openModal(src: string, alt: string) {
+      if (!modal) return;
+      modalImage.src = src;
+      modalImage.alt = alt;
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Add click handlers to all images in prose content
+    document.querySelectorAll('.prose img, article img').forEach(img => {
+      // Skip if already wrapped
+      if (img.closest('.expandable-image-wrapper')) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'expandable-image-wrapper';
+
+      const button = document.createElement('button');
+      button.className = 'expandable-image-trigger';
+      button.setAttribute('aria-label', `Expand image: ${img.getAttribute('alt') || ''}`);
+
+      const alt = img.getAttribute('alt') || '';
+
+      img.parentNode?.insertBefore(wrapper, img);
+      button.appendChild(img);
+      wrapper.appendChild(button);
+
+      // Add alt text below the image if it exists
+      if (alt) {
+        const altText = document.createElement('span');
+        altText.className = 'image-alt-text';
+        altText.textContent = alt;
+        button.appendChild(altText);
+      }
+
+      button.addEventListener('click', () => {
+        const src = img.getAttribute('src');
+        if (src) openModal(src, alt);
+      });
+    });
+
+    closeButton?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
+
+  // Run on initial load
+  initImageModal();
+
+  // Re-run after view transitions
+  document.addEventListener('astro:page-load', initImageModal);
+</script>
+
+<style>
+  .expandable-image-wrapper {
+    margin: 1.5rem 0;
+  }
+
+  .expandable-image-trigger {
+    all: unset;
+    display: block;
+    cursor: zoom-in;
+    border-radius: 0.5rem;
+    border: 1px solid #2a2a2a;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+    width: 100%;
+  }
+
+  .expandable-image-trigger:hover {
+    border-color: #3a3a3a;
+  }
+
+  .expandable-image-trigger img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin: 0;
+  }
+
+  /* Alt text styling */
+  .expandable-image-trigger .image-alt-text {
+    display: block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+    color: #a6adc8;
+    font-family: var(--font-mono);
+    text-align: left;
+    background-color: #1a1a1a;
+    border-top: 1px solid #2a2a2a;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    cursor: zoom-out;
+  }
+
+  .image-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .image-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  .image-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .image-modal-close:hover {
+    opacity: 1;
+  }
+</style>

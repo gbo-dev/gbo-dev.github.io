@@ -1,0 +1,139 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+---
+
+<div class="expandable-image-wrapper">
+  <button 
+    class="expandable-image-trigger"
+    aria-label={`Expand image: ${alt}`}
+    data-image-src={src}
+    data-image-alt={alt}
+  >
+    <img src={src} alt={alt} loading="lazy" decoding="async" />
+  </button>
+</div>
+
+<div id="image-modal" class="image-modal" aria-hidden="true">
+  <button class="image-modal-close" aria-label="Close image">&times;</button>
+  <img id="modal-image" src="" alt="" />
+</div>
+
+<script>
+  const triggers = document.querySelectorAll('.expandable-image-trigger');
+  const modal = document.getElementById('image-modal');
+  const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+  const closeButton = modal?.querySelector('.image-modal-close');
+
+  function openModal(src: string, alt: string) {
+    if (!modal || !modalImage) return;
+    modalImage.src = src;
+    modalImage.alt = alt;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const src = trigger.getAttribute('data-image-src');
+      const alt = trigger.getAttribute('data-image-alt');
+      if (src) openModal(src, alt || '');
+    });
+  });
+
+  closeButton?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      closeModal();
+    }
+  });
+</script>
+
+<style>
+  .expandable-image-wrapper {
+    margin: 1.5rem 0;
+  }
+
+  .expandable-image-trigger {
+    all: unset;
+    display: block;
+    cursor: zoom-in;
+    border-radius: 0.5rem;
+    border: 1px solid #2a2a2a;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .expandable-image-trigger:hover {
+    border-color: #3a3a3a;
+  }
+
+  .expandable-image-trigger img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
+  .image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    cursor: zoom-out;
+  }
+
+  .image-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .image-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  .image-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .image-modal-close:hover {
+    opacity: 1;
+  }
+</style>

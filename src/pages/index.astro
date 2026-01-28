@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+
+const catppuccinColors = [
+  'text-rosewater', 'text-flamingo', 'text-pink', 'text-mauve',
+  'text-red', 'text-maroon', 'text-peach', 'text-yellow',
+  'text-green', 'text-teal', 'text-sky', 'text-sapphire',
+  'text-blue', 'text-lavender'
+];
+const randomColor = catppuccinColors[Math.floor(Math.random() * catppuccinColors.length)];
+
+const posts = (await getCollection('blog', ({ data }) => {
+	// In production, filter out draft posts
+	if (import.meta.env.PROD) {
+		return data.draft !== true;
+	}
+	return true;
+})).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const postsWithReadingTime = await Promise.all(posts.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post);
+    return {
+        ...post,
+        readingTime: String(remarkPluginFrontmatter.minutesRead).replace(/\s*read$/i, '')
+    };
+}));
+---
+
+<Layout title="gbo">
+	<section class="mb-12 animate-entry" style="--stagger: 1;">
+		<h1 class={`text-2xl font-bold mb-4 ${randomColor}`}>gbo</h1>
+		<p class="text-gray-400 mb-4">
+			<!-- Software Engineer based in ... I like clean code, simple designs, and building things that last. -->
+			Hello World! 🐝
+		</p>
+		<div class="flex gap-4 text-sm font-medium">
+			<a href="/about" class="hover:text-white transition-colors">About</a>
+			<a href="https://github.com/gbo-dev" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+		</div>
+	</section>
+
+	<section class="animate-entry" style="--stagger: 2;">
+		<h2 class="text-xl mb-6 font-semibold">Content</h2>
+		<ul class="space-y-2">
+			{
+				postsWithReadingTime.map((post, index) => (
+					post.slug !== 'about' && (
+						<li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between group pb-1 animate-entry" style={`--stagger: ${index + 3};`}>
+						<a href={`/${post.slug}`} class="font-medium group-hover:text-white transition-colors underline decoration-current underline-offset-2">
+							{post.data.title}
+						</a>
+							<span class="text-sm text-gray-500 font-mono">
+								{post.readingTime}
+							</span>
+						</li>
+					)
+				))
+			}
+		</ul>
+	</section>
+</Layout>
