@@ -1,0 +1,12 @@
+base_url = "https://gbo-dev.github.io"
+title = "GBO"
+description = "Personal site of GBO"
+default_language = "en"
+compile_sass = false
+build_search_index = false
+generate_feeds = false
+minify_html = true
+
+[markdown.highlighting]
+style = "inline"
+theme = "ayu-dark"
