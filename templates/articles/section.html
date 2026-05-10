@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="archive animate-entry" style="--stagger: 1;">
+  <h2 class="archive-title">Articles</h2>
+  <ul class="archive-list">
+    {% for page in section.pages %}
+    <li class="archive-item">
+      <span class="archive-date">{{ page.date | date(format="%b %d %Y") }}</span>
+      <a href="{{ page.permalink }}" class="archive-link">{{ page.title }}</a>
+      <span class="archive-dots" aria-hidden="true"></span>
+      <span class="archive-meta">{{ page.reading_time }} min</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %}

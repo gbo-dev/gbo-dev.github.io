@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="stylesheet" href="/css/style.css">
+  {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+  <div class="site-wrapper">
+    {% block header %}
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="header-brand">GBO</a>
+        <nav class="header-nav">
+          <a href="/about">About</a>
+          <a href="/articles">Articles</a>
+          <a href="https://github.com/gbo-dev" target="_blank" rel="noopener" class="header-nav-external">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    {% endblock header %}
+    <main class="site-main">
+      {% block content %}{% endblock content %}
+    </main>
+  </div>
+  <script>
+    (function () {
+      var colors = ['#f5e0dc', '#f2cdcd', '#f5c2e7', '#cba6f7', '#f38ba8', '#eba0ac', '#fab387', '#f9e2af', '#a6e3a1', '#94e2d5', '#89dceb', '#74c7ec', '#89b4fa', '#b4befe'];
+      var accent = colors[Math.floor(Math.random() * colors.length)];
+      document.documentElement.style.setProperty('--random-accent', accent);
+    })();
+    document.addEventListener('DOMContentLoaded', function () {
+      var pres = document.querySelectorAll('pre');
+      var copyIcon = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      var checkIcon = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+      pres.forEach(function (pre) {
+        var btn = document.createElement('button');
+        btn.className = 'copy-button';
+        btn.innerHTML = copyIcon;
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.addEventListener('click', function () {
+          var code = pre.querySelector('code');
+          var text = code ? code.innerText : pre.innerText;
+          navigator.clipboard.writeText(text).then(function () {
+            btn.classList.add('copied');
+            btn.innerHTML = checkIcon;
+            setTimeout(function () {
+              btn.classList.remove('copied');
+              btn.innerHTML = copyIcon;
+            }, 2000);
+          });
+        });
+        pre.appendChild(btn);
+      });
+    });
+  </script>
+</body>
+</html>

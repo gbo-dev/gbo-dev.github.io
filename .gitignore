@@ -1,5 +1,6 @@
 # Build output
 dist/
+public/        # Zola build output
 
 # Astro
 .astro/
@@ -39,3 +40,6 @@ Thumbs.db
 
 # Old site backup (keep locally but don't commit)
 old/
+
+# Generated artifacts
+artifacts/
