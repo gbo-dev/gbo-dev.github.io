@@ -4,9 +4,9 @@ description = "How to use fzf to navigate your dotfiles quickly"
 date = 2025-02-28T16:28:36+01:00
 +++
 
-I previously used shell aliases to quickly access the config files I was modifying often. This become a bit cumbersome when the number of configs grew.
+I previously used shell aliases to quickly access the config files I was modifying often. Not great. This became quite cumbersome when the number of configs grew.
 
-Instead, I now use a small `pick` utility combined with a `config` function to quickly select which config to edit or navigate to. These are very simple scripts, but nice QoL conveniences.
+Instead, I now use a small `pick` utility to quickly select which config to edit or navigate to. Very simple logic, but high quality of life conveniences.
 
 ### Usage
 
@@ -22,7 +22,6 @@ I alias `config` to `c` for even quicker access:
 ```zsh
 alias c="config"
 c niri                  # Same as above, but shorter
-c ghostty               # Open ghostty config
 ```
 
 ### How it works
@@ -31,7 +30,7 @@ The setup consists of two parts: a `pick` script and a `config` function.
 
 `pick` is a small bash script that uses `fzf` to list directories from configurable roots. It supports two modes:
 
-- **`pick config`**: Scans `~/.config/*` plus `~/.dotfiles`
+- **`pick config`**: Scans `~/.config/*`
 - **`pick project`**: Scans `~/dev/*`
 
 It supports both interactive selection and direct query filtering.
@@ -68,13 +67,13 @@ extra=()
 case "$mode" in
   project)
     prompt="Projects> "
-    roots=("$HOME/dev")
-    extra=()
+    roots=("$HOME/dev")      # scans subdirectories
+    extra=()                 # exact paths
     ;;
   config)
     prompt="Config> "
-    roots=("$HOME/.config")
-    extra=("$HOME/.dotfiles")
+    roots=("$HOME/.config")  # scans subdirectories
+    extra=()                 # exact paths
     ;;
   *)
     printf '%s\n' "Usage: pick [project|config] [query]" >&2
@@ -113,13 +112,4 @@ else
 fi
 ```
 
-### Bonus: project picker
-
-The same `pick` utility also powers a `pp` function for projects:
-
-```zsh
-pp                      # Interactive project picker
-pp my-project           # Open specific project
-```
-
-All of these live in my [dotfiles repo](https://github.com/gbo-dev/.dotfiles).
+Explore in my [.files](https://github.com/gbo-dev/.dotfiles).
