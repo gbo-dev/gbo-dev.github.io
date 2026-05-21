@@ -1,6 +1,6 @@
 # Build output
 dist/
-public/        # Zola build output
+public/
 
 # Astro
 .astro/
