@@ -26,7 +26,6 @@
 /* Base */
 :root {
   color-scheme: dark;
-  --stagger: 1;
   --bg: #0a0a0a;
   --surface: #0e0e0e;
   --border: #2a2a2a;
@@ -35,6 +34,7 @@
   --text-muted: #a6adc8;
   --text-faint: #6c7086;
   --accent: #6699ff;
+  --accent-visited: #b48ead;
   --hover: var(--accent);
   --font-mono: 'Iosevka', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
 }
@@ -251,7 +251,6 @@ body {
 .post-body h4 { font-size: 1.1rem; }
 .post-body h5 { font-size: 1.0rem; }
 
-/* Kungfusheep-style heading blocks */
 .post-body h1,
 .post-body h2,
 .post-body h3,
@@ -259,8 +258,8 @@ body {
 .post-body h5 {
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background-color: var(--surface);
-  border-left: 3px solid var(--text-strong);
+  background-color: color-mix(in srgb, var(--surface), white 1%);
+  border-left: 3px solid var(--random-accent);
   padding: 0.4em 0.6em;
   margin: 2.5em 0 1em;
 }
@@ -292,6 +291,10 @@ body {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 0.15em;
+}
+
+.post-body a:visited {
+  color: var(--accent-visited);
 }
 
 .post-body a:hover {
@@ -346,30 +349,6 @@ article video {
   margin: 1.5rem 0;
 }
 
-/* Entry animations — disabled for now */
-/*
-@keyframes entry {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .animate-entry {
-    animation: entry 0.6s both calc(var(--stagger) * 0.12s);
-  }
-
-  html:active-view-transition .animate-entry {
-    animation: none;
-  }
-}
-*/
-
 /* Copy button for code blocks */
 pre .copy-button {
   position: absolute;
@@ -412,6 +391,37 @@ pre .copy-button.copied {
   background: #1a1a1a;
   color: var(--random-accent);
   opacity: 1;
+}
+
+/* Tables */
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.post-body th,
+.post-body td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.post-body th {
+  background-color: var(--surface);
+  color: var(--text-strong);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-body td {
+  color: var(--text);
+}
+
+.post-body tr:nth-child(even) td {
+  background-color: var(--surface);
 }
 
 /* About list grid */
